@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <title>3D text & confetti animation</title>
+  <style type="text/css">
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* 
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body 
+{
+  font-family: 'Poppins', sans-serif;
+  background-color: #242329;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+
+#confetti 
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.title 
+{
+  line-height: 1;
+  color: #fff;
+  animation:
+  animateText 5s infinite;
+}
+
+.title span 
+{
+  display: block;
+}
+.message 
+{
+  font-weight: 500;
+}
+
+.followers 
+{
+  font-weight: 700;
+  font-size: 70px;
+  background-image: linear-gradient(90deg, rgba(94, 114, 235, 1) 0%, #ff9190 56%, #fec195 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes animateText 
+{
+0%,
+100% {
+    transform: rotate3d(1, 1, 0, 50deg);
+  }
+
+25% {
+    transform: rotate3d(-1, 1, 0, -50deg);
+  }
+
+50% {
+    transform: rotate3d(-1, -1, 0, 25deg);
+  }
+
+75% {
+    transform: rotate3d(-1, 1, 0, -25deg);
+  }
+}
+
+.btn 
+{
+  position: absolute;
+  bottom: 30%;
+  left: 45%;
+  color: darkred;
+  background-color: grey;
+  padding: 10px;
+  font-family: "poppins", sans-serif;
+  font-size: 20px;
+  border-radius: 20%;
+}
+</style>
+
+</head>
+
+<body>
+<canvas id="confetti"></canvas>
+<h1 class="title">
+  <span class="message">Follow On Instagram</span>
+  <span class="followers">its_d3v_1608</span>
+</h1>
+<button class="btn">Click</button>
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+  <script>
+    const canvas = document.querySelector('#confetti')
+    const btn = document.querySelector('.btn')
+    const jsConfetti = new JSConfetti({
+      canvas
+    });
+
+    btn.addEventListener('click', () => {
+      jsConfetti.addConfetti({
+        confettiColors: [
+          '#892AB8', '#EA4C89', '#FFFF04', '#4AF2FD'
+        ],
+        confettiRadius: 3,
+        confettiNumber: 250
+      });
+    });
+  </script>
+</body>
+</html>
