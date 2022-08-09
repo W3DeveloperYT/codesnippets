@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"/>
+<link rel="stylesheet" href="./styles.css" />
+<title>Rotating words animation</title>
+<style type="text/css">
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap");
+* 
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body 
+{
+  font-family: "Poppins", sans-serif;
+  background-color: #242329;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+a 
+{
+  text-decoration: none;
+}
+.title 
+{
+  position: relative;
+  color: #fff;
+}
+.rotate-words 
+{
+  display: inline;
+  margin-left: 10px;
+}
+.rotate-words span 
+{
+  width: max-content;
+  position: absolute;
+  background-color: #bb93fc;
+  padding-inline: 10px;
+  opacity: 0;
+  transform-origin: 10% 75%;
+  animation: rotateWords 9s var(--d) linear infinite;
+}
+@keyframes rotateWords 
+{
+  5% {
+    opacity: 1;
+  }
+  10%,20% 
+  {
+    opacity: 1;
+    transform: rotate(3deg);
+  }
+  15% 
+  {
+    transform: rotate(-1deg);
+  }
+  25% 
+  {
+    opacity: 0;
+    transform: translateY(90px) rotate(10deg);
+  }
+}
+</style>
+</head>
+<body>
+<h1 class="title">I am Dev Miglani, a<br/>professional
+<div class="rotate-words">
+<span style="--d: 0s">ui designer.</span>
+<span style="--d: 3s">web developer.</span>
+<span style="--d: 6s">Advance Learner</span>
+</div>
+</h1>
+</body>
+</html>
