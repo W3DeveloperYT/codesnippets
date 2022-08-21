@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		*
+		{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body
+		{
+			background: #ececec;
+			font-family: Arial , Helvetica , sans-serif;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+		.container
+		{
+			padding: 40px 60px;
+			background: #fff;
+			display: flex;
+			align-items: center;
+			border: 5px solid rgba(190, 190, 190, 0);
+			box-shadow: 0 0 15px rgba(100, 100, 100, 0.3);
+			flex-direction: column;
+		}
+		.input
+		{
+			padding: 12px 20px;
+			width: 300px;
+			margin-bottom: 20px;
+		}
+		button
+		{
+			padding: 12px 20px;
+			margin-bottom: 20px;
+			border: 0;
+			background: #485696;
+			color: #fff;
+			text-transform: uppercase;
+			font-weight: 700;
+			letter-spacing: 2px;
+		}
+		#qr-image
+		{
+			display: none;
+		}
+		img 
+		{
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<input type="text" id="text" placeholder="Enter Text..." class="input">
+	<button type="button" onclick="generateQR()">Generate Qr</button>
+	<div id="qr-image">
+		<span class="error"></span><br>
+		<img src="" id="img">
+	</div>
+</div>
+<script type="text/javascript">
+	function generateQR() {
+		document.querySelector("#qr-image").style.display = "block";
+		let QRtext = document.querySelector("#text").value;
+		if(QRtext.trim().length == 0) {
+			document.querySelector("#qr-image .error").innerHTML = "Please Enter Text";
+			document.querySelector("img").style.display = "none";
+		} else {
+			document.querySelector("#img").style.display = "block";
+			document.querySelector("#qr-image .error").innerHTML = "";
+			document.querySelector('#img').src = "https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=" + QRtext;
+		}
+	}
+</script>
+</body>
+</html>
